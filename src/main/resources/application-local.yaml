@@ -1,0 +1,56 @@
+# 내 PC 개발용 (ddl-auto: update, 로컬 DB/Redis)
+
+## 서버 기본 설정
+server:
+  port: 8080
+
+
+## spring 프레임워크 관련 설정
+spring:
+  ### Mysql 연결 정보 설정
+  datasource:
+    url: jdbc:mysql://localhost:3309/tikitaka?useSSL=false&serverTimezone=Asia/Seoul&allowPublicKeyRetrieval=true
+    username: user
+    password: "0000"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  ### JPA 및 Hibernate(ORM) 설정
+  jpa:
+    hibernate:
+      ddl-auto: update # (개발 편의 목적) 테이블 자동 생성/수정
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  ### Redis 설정
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+
+## 애플리케이션 관련 설정
+app:
+  ### CORS 관련 설정
+  cors:
+    allowed-origins: http://localhost:5173 # 브라우저에서 백엔드 API 호출 허용할 프론트 주소
+
+  ### 저장소 관련 설정
+  storage:
+    location: ./uploads # 파일을 저장할 로컬 디스크 경로 (프로젝트 루트 기준 상대경로)
+    public-base-url: http://localhost:8080/files # 저장 파일을 브라우저가 조회할 기본 주소
+
+
+## API 문서 (Swagger)
+springdoc:
+  api-docs:
+    enabled: true # OpenAPI JSON 공개
+  swagger-ui:
+    enabled: true # 문서 화면 공개
+
+
+## 로깅 출력 레벨 설정
+logging:
+  level:
+    com.tikitaka: debug # 상세 디버깅 로그 출력

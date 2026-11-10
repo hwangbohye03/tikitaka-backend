@@ -1,0 +1,53 @@
+# 최종 실제 배포용 (ddl-auto: validate, 환경변수 보안 적용)
+
+## 서버 기본 설정
+server:
+  port: 8080
+
+## spring 프레임워크 관련 설정
+spring:
+  ### Mysql 연결 정보 설정
+  datasource:
+    url: jdbc:mysql://${DB_HOST:localhost}:3306/${DB_NAME:tikitaka}?useSSL=false&serverTimezone=Asia/Seoul
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  ### JPA 및 Hibernate(ORM) 설정
+  jpa:
+    hibernate:
+      ddl-auto: validate # 운영 DB 구조 변경 방지 (검증만 수행)
+    show-sql: false
+
+  ### Redis 설정
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: 6379
+      password: ${REDIS_PASSWORD}
+
+
+## 애플리케이션 관련 설정
+app:
+  ### CORS 관련 설정
+  cors:
+    allowed-origins: ${CORS_ALLOWED_ORIGINS} # 브라우저가 백엔드 api 호출 허용할 주소
+
+  ### 저장소 관련 설정
+  storage:
+    bucket: ${FIREBASE_STORAGE_BUCKET} # Firebase Storage 버킷 이름
+
+
+## API 문서 (Swagger)
+springdoc:
+  api-docs:
+    enabled: false # 운영에서는 API 명세 비공개
+  swagger-ui:
+    enabled: false # 운영에서는 문서 화면 비공개
+
+
+## 로깅 출력 레벨 설정
+logging:
+  level:
+    root: info
+    com.tikitaka: info # 운영 환경에서는 중요한 로그 위주로 기록

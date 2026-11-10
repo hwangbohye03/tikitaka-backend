@@ -1,0 +1,14 @@
+# 공통 & 기본 프로필 지정
+spring:
+  application:
+    name: tikitaka-backend
+  profiles:
+    active: local
+
+  # JPA 공통 설정
+  jpa:
+    open-in-view: false # OSIV 비활성화 (성능 및 커넥션 고갈 방지)
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100 # N+1 문제 완화를 위한 기본 페치 사이즈
+        jdbc.time_zone: Asia/Seoul
