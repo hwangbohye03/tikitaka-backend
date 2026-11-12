@@ -4,7 +4,7 @@ about: 도메인 기능 하나를 개발
 title: "[기능] 도메인명 - 작업 요약"
 labels: ""
 assignees: "hwangbohye03"
- ---
+---
 
 ## 도메인/요구사항
 - **도메인:** <!-- 예: Auth, User, Event, Booking -->
