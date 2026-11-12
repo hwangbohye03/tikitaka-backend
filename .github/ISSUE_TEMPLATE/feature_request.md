@@ -1,12 +1,12 @@
----
+<!--
 name: 기능 개발
 about: 도메인 기능 하나를 개발
 title: "[기능] 도메인명 - 작업 요약"
 labels: ""
 assignees: "hwangbohye03"
----
+ -->
 
-## 📌 도메인 / 요구사항
+## 도메인/요구사항
 - **도메인:** <!-- 예: Auth, User, Event, Booking -->
 - **요구사항 ID:** <!-- 예: AUTH-04, EVNT-01 (없으면 생략) -->
 
@@ -25,7 +25,7 @@ assignees: "hwangbohye03"
 
 ## 데이터 및 인프라 변경점
 <!-- ERD 테이블/컬럼 추가·수정, Redis 키 설계, 인덱스 등 변경 사항 (없으면 '변경 없음') -->
--
+
 
 ## 완료 조건 
 - [ ] 성공 응답이 공통 포맷(`ApiResponse`)으로 내려간다
@@ -35,4 +35,4 @@ assignees: "hwangbohye03"
 
 ## 확인 방법
 <!-- Swagger, Postman, curl 등으로 직접 검증할 시나리오 순서대로 작성 -->
-1.
+ 
