@@ -41,6 +41,13 @@ app:
     location: ./uploads # 파일을 저장할 로컬 디스크 경로 (프로젝트 루트 기준 상대경로)
     public-base-url: http://localhost:8080/files # 저장 파일을 브라우저가 조회할 기본 주소
 
+  ### JWT 관련 설정
+  jwt:
+    secret: "local-only-jwt-secret-do-not-use-in-prod" # JWT 서명/검증 키 (로컬 전용/ 32바이트 이상)
+    access-expiration: 30m
+    refresh-expiration: 14d
+    access-cookie-name: accessToken # Access Token 쿠키명
+
 
 ## API 문서 (Swagger)
 springdoc:

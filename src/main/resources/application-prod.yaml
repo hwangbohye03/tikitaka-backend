@@ -37,6 +37,13 @@ app:
   storage:
     bucket: ${FIREBASE_STORAGE_BUCKET} # Firebase Storage 버킷 이름
 
+  ### JWT 관련 설정
+  jwt:
+    secret: ${JWT_SECRET} # JWT 서명/검증 키 (32바이트 이상)
+    access-expiration: 30m
+    refresh-expiration: 14d
+    access-cookie-name: accessToken # Access Token 쿠키명
+
 
 ## API 문서 (Swagger)
 springdoc:

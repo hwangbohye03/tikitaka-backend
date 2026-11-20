@@ -13,6 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 컨트롤러 밖으로 나온 예외를 ApiResponse 실패 응답으로 변환한다.
+ * - Spring Security 필터 체인에서 발생한 인증 예외는 처리하지 않음
  * HTTP 상태는 ResponseEntity에 담고, 본문은 ApiResponse로 만든다.
 **/
 @Slf4j
