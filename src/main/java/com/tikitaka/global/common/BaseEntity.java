@@ -28,11 +28,11 @@ public abstract class BaseEntity {
 
 	/** 생성 시각 (수정 쿼리에 포함 X) */
 	@CreatedDate
-	@Column(nullable = false, updatable = false)
+	@Column(name = "created_at", nullable = false, updatable = false)
 	private LocalDateTime createdAt;
 
 	/** 수정 시각 (최초 생성부터 셋팅) */
 	@LastModifiedDate
-	@Column(nullable = false)
+	@Column(name = "updated_at", nullable = false)
 	private LocalDateTime updatedAt;
 }
