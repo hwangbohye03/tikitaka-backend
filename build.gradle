@@ -25,6 +25,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.2.0'
 	implementation 'org.springframework.boot:spring-boot-starter-websocket'
+
+	// JWT
+	implementation 'io.jsonwebtoken:jjwt-api:0.13.0'  // JWT API
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.13.0'	  // JWT 구현체
+	runtimeOnly 'io.jsonwebtoken:jjwt-orgjson:0.13.0' // Json 처리 모듈
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
