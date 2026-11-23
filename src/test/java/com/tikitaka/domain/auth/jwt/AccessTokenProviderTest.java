@@ -41,9 +41,14 @@ class AccessTokenProviderTest {
         // 작업 객체 생성
         AccessTokenProvider provider = prepareProvider(Duration.ofMinutes(30));
 
-        // 토큰 생성 및 오염(기존 토큰의 끝 문자만 변경)
+        // 토큰 생성 및 오염
         String token = provider.createAccessToken(1L, UserRole.ROLE_USER);
-        String tamperedToken = token.substring(0, token.length() - 1) + (token.endsWith("a") ? "b" : "a");
+
+        // 토큰 변조: 파싱 실패(헤더 손상)와 패딩 비트 무시(서명 끝문자 변경)를 피하기 위해, 토큰의 서명 구간 첫 문자만 변경
+        String[] parts = token.split("\\.");               // 토큰 구간 분리 (토큰 = "헤더.페이로드.서명")
+        String signature = parts[2];                             // 서명 구간 추출
+        char replacement = (signature.charAt(0)=='a')? 'b':'a';  // 서명 구간 첫 문자 변조
+        String tamperedToken = parts[0] + "." + parts[1] + "." + replacement + signature.substring(1);
 
         assertTrue(provider.parseAccessToken(tamperedToken).isEmpty());
     }

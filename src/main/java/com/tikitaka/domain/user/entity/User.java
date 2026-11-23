@@ -42,16 +42,19 @@ public class User extends BaseEntity {
     private String profileImageUrl;
 
     // 회원 권한
+    @Builder.Default // 빌더 기반 생성 시에도 기본값 유지
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false, length = 20)
     private UserRole role = UserRole.ROLE_USER;
 
     // 소셜 로그인 유형 (자체 이메일 가입은 NONE)
+    @Builder.Default // 빌더 기반 생성 시에도 기본값 유지
     @Enumerated(EnumType.STRING)
     @Column(name = "social_provider", nullable = false, length = 20)
     private SocialProvider socialProvider = SocialProvider.NONE;
 
     // 회원 상태 (서비스 탈퇴 여부)
+    @Builder.Default // 빌더 기반 생성 시에도 기본값 유지
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false, length = 20)
     private UserStatus status = UserStatus.ACTIVE;
